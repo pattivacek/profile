@@ -1,0 +1,12 @@
+[user]
+	name = Patrick Vacek
+	email = patrickvacek@gmail.com
+[push]
+	default = simple
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
