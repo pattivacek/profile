@@ -7,7 +7,7 @@
 set nocompatible        " Turn off strict compatibility with vi.
 set nobackup            " Don't keep a backup file
 set noswapfile          " Don't keep swapfiles
-set viminfo='20,<50     " 50 lines of registers
+set viminfo='20,<50,s100,h  " 50 lines of registers
 set history=50          " Keep 50 lines of command line history
 set noerrorbells        " Silence error bells/beeps
 set ttyscroll=1         " Does something about screen redrawing...
@@ -101,10 +101,15 @@ if has('autocmd')
     autocmd VimEnter * set vb t_vb=""
 endif
 
-"colorscheme desert      " Use more interesting colors
-colorscheme elflord      " Use more interesting colors
+"set t_Co=256            " Set terminal colors to 256.
+"let g:molokai_original=1
+"colorscheme molokai
+"colorscheme wombat      " Use more interesting colors
+colorscheme desert      " Use more interesting colors
+"colorscheme elflord      " Use more interesting colors
 if &diff
-   colorscheme ron " Better colors for vimdiff
+"   colorscheme evening " Better colors for vimdiff
+   colorscheme jellybeans " Better colors for vimdiff
 endif
 
 "========================== File Type Specifics ======================
@@ -156,8 +161,8 @@ nnoremap ,# :s/^/#/<CR>:noh<CR>
 nnoremap ," :s/^/"/<CR>:noh<CR>
 nnoremap ,; :s/^/;/<CR>:noh<CR>
 nnoremap ,! :s/^\(\s*\)\(.\)/\1!\2/<CR>:noh<CR>
-nnoremap ,% :s/^/%/<CR>:noh<CR>
-nnoremap ,c :s/^\(\s*\)\(\(\/\/\)\\|\(\#\)\\|\(\"\)\\|\(\;\)\\|\(\!\)\\|\(%\)\)/\1/<CR>:noh<CR>
+nnoremap ,% :s/^/% /<CR>:noh<CR>
+nnoremap ,c :s/^\(\s*\)\(\(\/\/\)\\|\(\#\)\\|\(\"\)\\|\(\;\)\\|\(\!\)\\|\(% \)\)/\1/<CR>:noh<CR>
 
 " If using the above shortcuts and searching for multiple items to comment/
 " uncomment, use this to search for the next desired item.

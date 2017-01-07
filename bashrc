@@ -8,6 +8,14 @@ case $- in
       *) return;;
 esac
 
+#if [ -n "${BASHRC_COMPLETE}" ]; then
+#    return 0
+#fi
+#export BASHRC_COMPLETE=yes
+#if [ ! -n "${PROFILE_COMPLETE}" ]; then
+#    . ~/.profile
+#fi
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -90,8 +98,8 @@ fi
 # some more ls aliases
 alias ls="/bin/ls --color=tty"
 alias la="ls -aF"
-alias ll="ls -lhF"
-alias lla="ls -alhF"
+alias ll="ls -lhF --color=always"
+alias lla="ll -a"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -120,18 +128,20 @@ fi
 if [ -f /etc/bash_completion.d/git-prompt ]; then
    . /etc/bash_completion.d/git-prompt
    # Put the current git branch (if applicable) into our prompt
-#   PS1='[\u \t \W$(__git_ps1 " (%s)")]\$ '
-   PS1='[$(date +%H%M)][\[\033[1;36m\]\u:\w$(__git_ps1 " (%s)")\[\033[0m\]]$ '
+#   PS1='[\u@\h \t \W$(__git_ps1 " (%s)")]\$ '
+   PS1='[$(date +%H%M)][\[\033[1;36m\]\u@\h:\w$(__git_ps1 " (%s)")\[\033[0m\]]$ '
 else
-#   PS1='[\u \t \W]\$ '
-   PS1='[$(date +%H%M)][\[\033[1;36m\]\u:\w\[\033[0m\]]$ '
+#   PS1='[\u@\h \t \W]\$ '
+   PS1='[$(date +%H%M)][\[\033[1;36m\]\u@\h:\w\[\033[0m\]]$ '
 fi
 
 #shortcuts
 # The seds do syntax highlighting. -r is necessary for less to display that properly.
 alias hl="sed 's/^-/\x1b[1;33m-/' | sed 's/^+/\x1b[31m+/' | sed 's/^\@/\x1b[36m@/' | sed 's/$/\x1b[0m/' | less -r"
 # Vim less. If unavailable, try 'hl' to make the git/svn shortcuts prettier.
-if [ -f /usr/share/vim/vim73/macros/less.sh ]; then
+if [ -f /usr/share/vim/vim74/macros/less.sh ]; then
+   alias lessv='/usr/share/vim/vim74/macros/less.sh'
+elif [ -f /usr/share/vim/vim73/macros/less.sh ]; then
    alias lessv='/usr/share/vim/vim73/macros/less.sh'
 elif [ -f /usr/share/vim/vim72/macros/less.sh ]; then
    alias lessv='/usr/share/vim/vim72/macros/less.sh'
@@ -143,7 +153,9 @@ fi
 
 # Git shortcuts.
 alias glog="git log --name-status | lessv"
+alias glogd="git log --name-status --decorate --color=always | hl"
 alias glogorig="git log origin/master --name-status | lessv"
+alias glogone="git log --oneline --decorate --color --graph --all"
 alias gstat="git status"
 alias gdiff="git diff -M | lessv"
 alias gsdiff="git diff -M --staged | lessv"
