@@ -141,6 +141,7 @@ if has('autocmd')
     autocmd FileType matlab source $VIMRUNTIME/macros/matchit.vim
 
     autocmd FileType text set textwidth=0
+    autocmd FileType python set textwidth=79
 endif
 
 let fortran_do_enddo=1
