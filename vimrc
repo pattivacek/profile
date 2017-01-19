@@ -105,12 +105,12 @@ endif
 "let g:molokai_original=1
 "colorscheme molokai
 "colorscheme wombat      " Use more interesting colors
-colorscheme desert      " Use more interesting colors
-"colorscheme elflord      " Use more interesting colors
-if &diff
-"   colorscheme evening " Better colors for vimdiff
-   colorscheme jellybeans " Better colors for vimdiff
-endif
+"colorscheme desert      " Use more interesting colors
+colorscheme jellybeans      " Use more interesting colors
+"if &diff
+""   colorscheme evening " Better colors for vimdiff
+"   colorscheme jellybeans " Better colors for vimdiff
+"endif
 
 "========================== File Type Specifics ======================
 if has('autocmd')
