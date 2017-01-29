@@ -131,7 +131,7 @@ if has('autocmd')
     autocmd FileType c,cpp set cinoptions=:0l1g0(0+2s
 
     " Remove trailing whitespace when saving certain file types.
-    autocmd FileType c,cpp,fortran,matlab autocmd BufWritePre * :%s/\s\+$//e
+    autocmd FileType c,cpp,fortran,matlab,python autocmd BufWritePre * :%s/\s\+$//e
 
     " Use improved matching logic for Matlab.
     autocmd FileType matlab source $VIMRUNTIME/macros/matchit.vim
