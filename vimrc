@@ -48,7 +48,6 @@ set smartcase
 "================================ Formatting ============================
 set expandtab           " Always convert tabs to spaces
 set backspace=2         " Allow backspacing over everything in insert mode
-"set smartindent         " Enable smart indenting
 "set tabstop=4           " Set tab width to 4 spaces
 
 " Make groups of 4 spaces behave like a single tab.  That is, hitting
@@ -119,9 +118,6 @@ if has('autocmd')
 
     " Indent intelligently when editing C source code.
     autocmd FileType c,cpp,fortran set cindent
-
-    " Perl code looks pretty close to C, so use smart indenting
-    autocmd FileType perl set smartindent
 
     " Specify how C source code should be indented.  This can be interpreted as:
     "
