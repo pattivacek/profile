@@ -48,7 +48,7 @@ set smartcase
 "================================ Formatting ============================
 set expandtab           " Always convert tabs to spaces
 set backspace=2         " Allow backspacing over everything in insert mode
-"set tabstop=4           " Set tab width to 4 spaces
+set tabstop=4           " Set tab width to 4 spaces
 
 " Make groups of 4 spaces behave like a single tab.  That is, hitting
 " backspace will delete all 4 spaces.
@@ -113,8 +113,8 @@ colorscheme jellybeans      " Use more interesting colors
 
 "========================== File Type Specifics ======================
 if has('autocmd')
-    " Makefiles have to have tabs in them or make will complain very loudly.
-    autocmd FileType make set noexpandtab
+    " Makefiles must have tabs in them or make will complain very loudly.
+    autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
 
     " Indent intelligently when editing C source code.
     autocmd FileType c,cpp,fortran set cindent
