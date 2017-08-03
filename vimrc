@@ -203,8 +203,8 @@ imap <F5> :%s/\s\+$//e<CR>i
 " Fortran allowing for more block types exists in
 " ~/.vim/ftplugin/fortran_codecomplete.vim.
 if has('autocmd')
-    autocmd FileType c,cpp nmap <F7> o{<CR>}<ESC>O
-    autocmd FileType c,cpp imap <F7> <CR>{<CR>}<ESC>O
+    autocmd FileType c,cpp nmap <F7> a<space>{<CR>}<ESC>O
+    autocmd FileType c,cpp imap <F7> <space>{<CR>}<ESC>O
     autocmd FileType tex nmap <F7> o\begin{quotation}<CR>\end{quotation}<ESC>O
     autocmd FileType tex imap <F7> <CR>\begin{quotation}<CR>\end{quotation}<ESC>O
 endif
