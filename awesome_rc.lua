@@ -332,7 +332,13 @@ globalkeys = awful.util.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+
+    -- Lock screen with F12
+    awful.key({ }, "F12", function () awful.util.spawn("xscreensaver-command -lock") end),
+
+    -- Print screen
+    awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/Pictures/ 2>/dev/null'", false) end)
 )
 
 clientkeys = awful.util.table.join(
@@ -547,3 +553,6 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+awful.util.spawn_with_shell("xscreensaver -no-splash")
+
