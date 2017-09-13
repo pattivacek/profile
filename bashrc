@@ -136,39 +136,40 @@ else
 fi
 
 #shortcuts
-# The seds do syntax highlighting. -r is necessary for less to display that properly.
-alias hl="sed 's/^-/\x1b[1;33m-/' | sed 's/^+/\x1b[31m+/' | sed 's/^\@/\x1b[36m@/' | sed 's/$/\x1b[0m/' | less -r"
-# Vim less. If unavailable, try 'hl' to make the git/svn shortcuts prettier.
-if [ -f /usr/share/vim/vim74/macros/less.sh ]; then
-   alias lessv='/usr/share/vim/vim74/macros/less.sh'
-elif [ -f /usr/share/vim/vim73/macros/less.sh ]; then
-   alias lessv='/usr/share/vim/vim73/macros/less.sh'
-elif [ -f /usr/share/vim/vim72/macros/less.sh ]; then
-   alias lessv='/usr/share/vim/vim72/macros/less.sh'
-elif [ -f /usr/share/vim/vim70/macros/less.sh ]; then
-   alias lessv='/usr/share/vim/vim70/macros/less.sh'
+alias lessr='less -R'
+
+# Vim less.
+# https://coderwall.com/p/hkb3wa/turn-vim-into-a-pager-less-more
+less_path=`find $(vim --version | awk ' /fall-back/ { gsub(/\"/,"",$NF); print $NF }'  )/ -name less.sh`
+if [ -n $less_path ]; then
+   alias lessv=$less_path
 else
-   alias lessv='hl'
+   alias lessv='lessr'
 fi
 
 # Git shortcuts.
-alias glog="git log --name-status | lessv"
-alias glogd="git log --name-status --decorate --color=always | hl"
-alias glogorig="git log origin/master --name-status | lessv"
+alias glog="git log --name-status --decorate --color"
+alias glogl="glog | lessr"
 alias glogone="git log --oneline --decorate --color --graph --all"
+alias glogonel="glogone | lessr"
 alias gstat="git status"
-alias gdiff="git diff -M | lessv"
-alias gsdiff="git diff -M --staged | lessv"
+alias gshow="git show --color"
+alias gdiff="git diff --color -M"
+alias gdiffl="gdiff | lessr"
+alias gsdiff="git diff --color -M --staged"
+alias gsdiffl="gsdiff | lessr"
 # Hide whitespace changes.
-alias gwdiff="git diff -M -w | lessv"
-alias gswdiff="git diff -M --staged -w | lessv"
+alias gwdiff="git diff --color -M -w"
+alias gwdiffl="gwdiff | lessr"
+alias gswdiff="git diff --color -M --staged -w"
+alias gswdiffl="gswdiff | lessr"
 # Show explicit whitespace changes.
-alias gadiff="git diff -M | cat -A | lessv"
-alias gsadiff="git diff -M --staged | cat -A | lessv"
+alias gadiff="git diff --color -M | cat -A | lessr"
+alias gsadiff="git diff --color -M --staged | cat -A | lessr"
 
 # SVN shortcuts.
-alias svndiff="svn diff | lessv"
-alias svnlog="svn log | lessv"
+alias svndiff="svn diff | lessr"
+alias svnlog="svn log | lessr"
 alias greps="grep --exclude=""*.svn*"""
 
 # Ignore ctrl-s and ctrl-q, which normally halt terminal flow. Don't bother if
