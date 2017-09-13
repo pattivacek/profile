@@ -128,11 +128,9 @@ fi
 if [ -f /etc/bash_completion.d/git-prompt ]; then
    . /etc/bash_completion.d/git-prompt
    # Put the current git branch (if applicable) into our prompt
-#   PS1='[\u@\h \t \W$(__git_ps1 " (%s)")]\$ '
-   PS1='[$(date +%H%M)][\[\033[1;36m\]\u@\h:\w$(__git_ps1 " (%s)")\[\033[0m\]]$ '
+   PS1='[\[\033[1;36m\]\u@\h:\W$(__git_ps1 " (%s)")\[\033[0m\]]$ '
 else
-#   PS1='[\u@\h \t \W]\$ '
-   PS1='[$(date +%H%M)][\[\033[1;36m\]\u@\h:\w\[\033[0m\]]$ '
+   PS1='[\[\033[1;36m\]\u@\h:\W\[\033[0m\]]$ '
 fi
 
 #shortcuts
