@@ -215,6 +215,21 @@ nnoremap ,{ o{<ESC>o}<ESC>O
 " at an earlier point, go to that point and try this.
 nnoremap ,<CR> i<CR><ESC>$a<DEL><ESC>ldwi <ESC>
 
+"============================== Plugins ================================
+" Pathogen easy plugin installer.
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+
+" Syntastic syntax checker.
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 "============================== Inactive ==============================
 " Maintain 'persist' data, but keep my workspace clean
 "set backup
