@@ -1,1 +1,0 @@
-../../vim-bitbake/syntax/bitbake.vim

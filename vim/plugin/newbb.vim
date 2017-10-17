@@ -1,1 +1,0 @@
-../../vim-bitbake/plugin/newbb.vim

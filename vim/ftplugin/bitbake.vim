@@ -1,1 +1,0 @@
-../../vim-bitbake/ftplugin/bitbake.vim
