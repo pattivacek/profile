@@ -100,7 +100,12 @@ if has('autocmd')
     autocmd VimEnter * set vb t_vb=""
 endif
 
-"set t_Co=256            " Set terminal colors to 256.
+" Set terminal colors to 256 if available but not automatically set.
+" https://statico.github.io/vim.html
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+  set t_Co=256
+endif
+
 "let g:molokai_original=1
 "colorscheme molokai
 "colorscheme wombat      " Use more interesting colors
@@ -199,6 +204,19 @@ nnoremap ,{ o{<ESC>o}<ESC>O
 " If a line has been broken past where you want and you want to instead break
 " at an earlier point, go to that point and try this.
 nnoremap ,<CR> i<CR><ESC>$a<DEL><ESC>ldwi <ESC>
+
+" Command line movement.
+" https://statico.github.io/vim.html
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-f>  <Right>
+cnoremap <C-d>  <Delete>
+cnoremap <M-b>  <S-Left>
+cnoremap <M-f>  <S-Right>
+cnoremap <M-d>  <S-right><Delete>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+cnoremap <Esc>d <S-right><Delete>
 
 "============================== Plugins ================================
 " Pathogen easy plugin installer.
