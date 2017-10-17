@@ -3,7 +3,7 @@
 " This file does not include any configuration for the GUI since .gvimrc
 " is sourced just for that reason.
 
-"============================== Miscellaneous ===========================
+"============================== Miscellaneous ==========================
 set nocompatible        " Turn off strict compatibility with vi.
 set nobackup            " Don't keep a backup file
 set noswapfile          " Don't keep swapfiles
@@ -45,7 +45,7 @@ set guioptions+=f
 " be sensitive.
 set smartcase
 
-"================================ Formatting ============================
+"================================ Formatting ===========================
 set expandtab           " Always convert tabs to spaces
 set backspace=2         " Allow backspacing over everything in insert mode
 set tabstop=4           " Set tab width to 4 spaces
@@ -65,7 +65,7 @@ set smarttab
 " This should cover files that don't have indentexprs associated with them.
 set autoindent
 
-"================================ Display ===============================
+"================================ Display ==============================
 set showmode            " Show what mode the editor is currently in (visual, insert, etc)
 set noerrorbells        " Disable the bell.
 set showcmd             " Show (partial) command in status line.
@@ -111,7 +111,7 @@ colorscheme jellybeans      " Use more interesting colors
 "   colorscheme jellybeans " Better colors for vimdiff
 "endif
 
-"========================== File Type Specifics ======================
+"========================== File Type Specifics ========================
 if has('autocmd')
     " Makefiles must have tabs in them or make will complain very loudly.
     autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
@@ -215,7 +215,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"============================== Inactive ==============================
+"============================== Inactive ===============================
 " Maintain 'persist' data, but keep my workspace clean
 "set backup
 "set backupdir=~/.vim/backup   " previous versions of files are placed here

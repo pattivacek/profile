@@ -16,7 +16,7 @@ export PROFILE_COMPLETE=yes
 if [ -n "$BASH_VERSION" ]; then
     # Include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+        . "$HOME/.bashrc"
     fi
 fi
 
