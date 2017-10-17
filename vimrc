@@ -48,15 +48,15 @@ set smartcase
 "================================ Formatting ===========================
 set expandtab           " Always convert tabs to spaces
 set backspace=2         " Allow backspacing over everything in insert mode
-set tabstop=4           " Set tab width to 4 spaces
+set tabstop=2           " Set tab width to 2 spaces
 
-" Make groups of 4 spaces behave like a single tab.  That is, hitting
-" backspace will delete all 4 spaces.
-set softtabstop=4
+" Make groups of 2 spaces behave like a single tab.  That is, hitting
+" backspace will delete all 2 spaces.
+set softtabstop=2
 
 " Default indentation level.  How many columns to indent by when you use the
 " >> command.
-set shiftwidth=4
+set shiftwidth=2
 
 " Be smart about indenting things?  Should make TAB indent things.
 set smarttab
