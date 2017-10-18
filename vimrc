@@ -100,12 +100,6 @@ if has('autocmd')
     autocmd VimEnter * set vb t_vb=""
 endif
 
-" Set terminal colors to 256 if available but not automatically set.
-" https://statico.github.io/vim.html
-if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-  set t_Co=256
-endif
-
 "let g:molokai_original=1
 "colorscheme molokai
 "colorscheme wombat      " Use more interesting colors
