@@ -212,6 +212,12 @@ cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
 
+" Alt-PageUp/Down to move between tabs.
+nmap <M-PageUp> gT
+imap <M-PageUp> <Esc>gT
+nmap <M-PageDown> gt
+imap <M-PageDown> <Esc>gt
+
 "============================== Plugins ================================
 " Pathogen easy plugin installer.
 runtime bundle/vim-pathogen/autoload/pathogen.vim
