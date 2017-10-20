@@ -218,14 +218,16 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 
 " Syntastic syntax checker.
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_cpp_checkers = ['clang_check']
+"let g:syntastic_clang_check_config_file = 1
 
 "============================== Inactive ===============================
 " Maintain 'persist' data, but keep my workspace clean
