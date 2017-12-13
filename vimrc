@@ -152,13 +152,13 @@ endif
 " does the job) and use ,c to uncomment.
 " The // and ! versions are built to respect leading whitespace and to ignore empty lines.
 " All of these commands clear the search highlighting afterwards for cleanliness.
-nnoremap ,/ :s/^\(\s*\)\(.\)/\1\/\/\2/<CR>:noh<CR>
+nnoremap ,/ :s/^\(\s*\)\(.\)/\1\/\/ \2/<CR>:noh<CR>
 nnoremap ,# :s/^/#/<CR>:noh<CR>
 nnoremap ," :s/^/"/<CR>:noh<CR>
 nnoremap ,; :s/^/;/<CR>:noh<CR>
 nnoremap ,! :s/^\(\s*\)\(.\)/\1!\2/<CR>:noh<CR>
 nnoremap ,% :s/^/% /<CR>:noh<CR>
-nnoremap ,c :s/^\(\s*\)\(\(\/\/\)\\|\(\#\)\\|\(\"\)\\|\(\;\)\\|\(\!\)\\|\(% \)\)/\1/<CR>:noh<CR>
+nnoremap ,c :s/^\(\s*\)\( \(\/\/\)\\|\(\#\)\\|\(\"\)\\|\(\;\)\\|\(\!\)\\|\(% \)\)/\1/<CR>:noh<CR>
 
 " If using the above shortcuts and searching for multiple items to comment/
 " uncomment, use this to search for the next desired item.
@@ -228,12 +228,12 @@ execute pathogen#infect()
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_checkers = ['clang_check']
-"let g:syntastic_clang_check_config_file = 1
+"let g:syntastic_always_populate_loc_list = 1
+""let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_cpp_checkers = ['clang_check']
+""let g:syntastic_clang_check_config_file = 1
 
 "============================== Inactive ===============================
 " Maintain 'persist' data, but keep my workspace clean
