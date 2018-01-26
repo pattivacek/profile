@@ -14,6 +14,16 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Load Debian menu entries
 require("debian.menu")
 
+-- Extra widgets
+-- https://github.com/streetturtle/awesome-wm-widgets
+local cpu_widget = require("awesome-wm-widgets.cpu-widget.cpu-widget")
+-- local email_widget = require("awesome-wm-widgets.email-widget.email")
+-- Requires arc-icon-theme to be installed (https://github.com/horst3180/arc-icon-theme)
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+local volumearc_widget = require("awesome-wm-widgets.volumearc-widget.volumearc")
+-- Requires acpi to be installed
+local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -219,6 +229,10 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+            cpu_widget,
+            brightness_widget,
+            volumearc_widget,
+            batteryarc_widget,
             mytextclock,
             s.mylayoutbox,
         },
@@ -338,7 +352,13 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "F12", function () awful.util.spawn("xscreensaver-command -lock") end),
 
     -- Print screen
-    awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/Pictures/ 2>/dev/null'", false) end)
+    awful.key({ }, "Print", function () awful.util.spawn("scrot -e 'mv $f ~/Pictures/ 2>/dev/null'", false) end),
+
+    -- Volume keys
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.spawn("amixer -D pulse sset Master 5%-") end, {description = "increase volume", group = "custom"}),
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.spawn("amixer -D pulse sset Master 5%+") end, {description = "decrease volume", group = "custom"}),
+    -- Doesn't update the icon, but does work:
+    awful.key({ }, "XF86AudioMute", function () awful.spawn("amixer -D pulse set Master 1+ toggle") end, {description = "mute volume", group = "custom"})
 )
 
 clientkeys = awful.util.table.join(
@@ -554,6 +574,7 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
+-- Autostart applications
 awful.util.spawn_with_shell("pgrep -u $USER -x xscreensaver > /dev/null || (xscreensaver -no-splash &)")
 -- https://askubuntu.com/a/183334/173694
 awful.util.spawn_with_shell("pgrep -u $USER -x nm-applet > /dev/null || (nm-applet &)")
