@@ -8,13 +8,13 @@ case $- in
       *) return;;
 esac
 
-#if [ -n "${BASHRC_COMPLETE}" ]; then
-#    return 0
-#fi
-#export BASHRC_COMPLETE=yes
-#if [ ! -n "${PROFILE_COMPLETE}" ]; then
-#    . ~/.profile
-#fi
+if [ -n "${BASHRC_COMPLETE}" ]; then
+    return 0
+fi
+export BASHRC_COMPLETE=yes
+if [ ! -n "${PROFILE_COMPLETE}" ]; then
+    . ~/.profile
+fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -127,16 +127,18 @@ fi
 
 if [ -f /etc/bash_completion.d/git-prompt ]; then
    . /etc/bash_completion.d/git-prompt
-   # Put the current git branch (if applicable) into our prompt
+   # Put the current git branch (if applicable) into our prompt.
    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[1;36m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
 else
    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 fi
 
-#shortcuts
-alias lessr='less -R'
+# Put user/host/current directory in terminal title.
+# https://stackoverflow.com/questions/10517128/change-gnome-terminal-title-to-reflect-the-current-directory
+PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
 
-# Vim less.
+# Better less.
+alias lessr='less -R'
 # https://coderwall.com/p/hkb3wa/turn-vim-into-a-pager-less-more
 less_path=`find $(vim --version | awk ' /fall-back/ { gsub(/\"/,"",$NF); print $NF }'  )/ -name less.sh`
 if [ -n $less_path ]; then
