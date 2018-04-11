@@ -186,3 +186,6 @@ export LANG=en_US.UTF-8
 
 # Use pretty colors with ls and other tools.
 #eval "`dircolors -b ~/.dir_colors`"
+
+# Make sure gpg-agent uses a good tty.
+export GPG_TTY=$(tty)
