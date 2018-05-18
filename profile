@@ -25,6 +25,11 @@ if [ -d "$HOME/bin" ] ; then
     export PATH="$HOME/bin:$PATH"
 fi
 
+# Set PATH so it includes default pip installation directory if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    export PATH="$PATH:$HOME/.local/bin"
+fi
+
 # I've never understood why this isn't in the path by default.
 export PATH="${PATH}:/usr/sbin:/sbin"
 

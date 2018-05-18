@@ -135,7 +135,7 @@ if has('autocmd')
     " Use improved matching logic for Matlab.
     autocmd FileType matlab source $VIMRUNTIME/macros/matchit.vim
 
-    autocmd FileType text set textwidth=0
+    autocmd FileType asciidoc,text set textwidth=0
     autocmd FileType python set textwidth=79
 endif
 
