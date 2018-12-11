@@ -135,8 +135,14 @@ if has('autocmd')
     " Use improved matching logic for Matlab.
     autocmd FileType matlab source $VIMRUNTIME/macros/matchit.vim
 
-    autocmd FileType asciidoc,text set textwidth=0
+    autocmd FileType asciidoc,markdown,text set textwidth=0
     autocmd FileType python set textwidth=79
+
+    augroup cpp_mode
+      if executable('clang-format')
+        autocmd FileType c,cpp setl formatprg=clang-format
+      endif
+    augroup end
 endif
 
 let fortran_do_enddo=1
@@ -158,7 +164,7 @@ nnoremap ," :s/^/"/<CR>:noh<CR>
 nnoremap ,; :s/^/;/<CR>:noh<CR>
 nnoremap ,! :s/^\(\s*\)\(.\)/\1!\2/<CR>:noh<CR>
 nnoremap ,% :s/^/% /<CR>:noh<CR>
-nnoremap ,c :s/^\(\s*\)\( \(\/\/\)\\|\(\#\)\\|\(\"\)\\|\(\;\)\\|\(\!\)\\|\(% \)\)/\1/<CR>:noh<CR>
+nnoremap ,c :s/^\(\s*\)\(\(\/\/\) \\|\(\#\)\\|\(\"\)\\|\(\;\)\\|\(\!\)\\|\(% \)\)/\1/<CR>:noh<CR>
 
 " If using the above shortcuts and searching for multiple items to comment/
 " uncomment, use this to search for the next desired item.
