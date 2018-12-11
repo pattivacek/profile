@@ -358,7 +358,11 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioLowerVolume", function () awful.spawn("amixer -D pulse sset Master 5%-") end, {description = "increase volume", group = "custom"}),
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.spawn("amixer -D pulse sset Master 5%+") end, {description = "decrease volume", group = "custom"}),
     -- Doesn't update the icon, but does work:
-    awful.key({ }, "XF86AudioMute", function () awful.spawn("amixer -D pulse set Master 1+ toggle") end, {description = "mute volume", group = "custom"})
+    awful.key({ }, "XF86AudioMute", function () awful.spawn("amixer -D pulse set Master 1+ toggle") end, {description = "mute volume", group = "custom"}),
+
+    -- Brightness
+    awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("xbacklight -dec 15") end),
+    awful.key({ }, "XF86MonBrightnessUp", function () awful.util.spawn("xbacklight -inc 15") end)
 )
 
 clientkeys = awful.util.table.join(
