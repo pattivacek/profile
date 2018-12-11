@@ -1,19 +1,21 @@
 [user]
-	name = Patrick Vacek
-	email = patrickvacek@gmail.com
+  name = Patrick Vacek
+  email = patrickvacek@gmail.com
+  signingkey=148011C8B954ACB0AF4435D540877B37211A1173
 [push]
-	default = simple
+  default = simple
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	unstage = reset HEAD --
-	last = log -1 HEAD
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  unstage = reset HEAD --
+  last = log -1 HEAD
+  lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(bold cyan)(%ar)%C(reset) %C(bold yellow)%d%C(reset) %s %C(dim white)- %an%Creset' --all
 [color]
-	ui = auto
+  ui = auto
 [core]
-	editor = vim
-	pager = less -R
+  editor = vim
+  pager = less -R
 [commit]
-	gpgsign = true
+  gpgsign = true
