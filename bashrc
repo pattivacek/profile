@@ -139,9 +139,10 @@ PROMPT_COMMAND='echo -ne "\033]0;${PWD}\007"'
 
 # Better less.
 alias lessr='less -R'
+alias lr='less -R'
 # https://coderwall.com/p/hkb3wa/turn-vim-into-a-pager-less-more
-less_path=`find $(vim --version | awk ' /fall-back/ { gsub(/\"/,"",$NF); print $NF }'  )/ -name less.sh`
-if [ -n $less_path ]; then
+less_path=$(find "$(vim --version | awk ' /fall-back/ { gsub(/\"/,"",$NF); print $NF }' )"/ -name less.sh)
+if [ -n "$less_path" ]; then
    alias lessv=$less_path
 else
    alias lessv='lessr'
