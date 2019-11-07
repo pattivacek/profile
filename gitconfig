@@ -21,6 +21,8 @@
   sd = diff --color -M --staged
   wd = diff --color -M -w
   swd = diff --color -M --staged -w
+  prev = show --name-only --pretty="format:"
+  cur = diff --name-only --pretty="format:"
 [color]
   ui = auto
 [core]
