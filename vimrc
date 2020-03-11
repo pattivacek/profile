@@ -189,6 +189,10 @@ imap <F4> :set number!<CR>i
 nmap <F5> :%s/\s\+$//e<CR>
 imap <F5> :%s/\s\+$//e<CR>i
 
+" Turn on English spellchecking.
+nmap <F6> :setlocal spell spelllang=en_us<CR>
+imap <F6> :setlocal spell spelllang=en_us<CR>i
+
 " Shortcut to make an if block in C. A more complicated/robust solution for
 " Fortran allowing for more block types exists in
 " ~/.vim/ftplugin/fortran_codecomplete.vim.
