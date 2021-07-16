@@ -203,18 +203,35 @@ function! ToggleSpell()
   endif
   echo "spell checking language:" g:myLangList[b:myLang]
 endfunction
-
 nmap <F6> :call ToggleSpell()<CR>
 imap <F6> :call ToggleSpell()<CR>a
+
+" Toggle tab width
+let g:myTab = 0
+function ToggleTag()
+  if g:myTab
+    set tabstop=4
+    set softtabstop=4
+    set shiftwidth=4
+    let g:myTab = 0
+  else
+    set tabstop=2
+    set softtabstop=2
+    set shiftwidth=2
+    let g:myTab = 1
+  endif
+endfunction
+nmap <F7> mz:execute ToggleTag()<CR>'z
+imap <F7> mz:execute ToggleTag()<CR>'za
 
 " Shortcut to make an if block in C. A more complicated/robust solution for
 " Fortran allowing for more block types exists in
 " ~/.vim/ftplugin/fortran_codecomplete.vim.
 if has('autocmd')
-    autocmd FileType c,cpp nmap <F7> a<space>{<CR>}<ESC>O
-    autocmd FileType c,cpp imap <F7> <space>{<CR>}<ESC>O
-    autocmd FileType tex nmap <F7> o\begin{quotation}<CR>\end{quotation}<ESC>O
-    autocmd FileType tex imap <F7> <CR>\begin{quotation}<CR>\end{quotation}<ESC>O
+    autocmd FileType c,cpp nmap <F8> a<space>{<CR>}<ESC>O
+    autocmd FileType c,cpp imap <F8> <space>{<CR>}<ESC>O
+    autocmd FileType tex nmap <F8> o\begin{quotation}<CR>\end{quotation}<ESC>O
+    autocmd FileType tex imap <F8> <CR>\begin{quotation}<CR>\end{quotation}<ESC>O
 endif
 
 " Create nice brackets for a new scope and place the cursor in the middle.
