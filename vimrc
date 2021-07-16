@@ -189,9 +189,23 @@ imap <F4> :set number!<CR>i
 nmap <F5> :%s/\s\+$//e<CR>
 imap <F5> :%s/\s\+$//e<CR>i
 
-" Turn on English spellchecking.
-nmap <F6> :setlocal spell spelllang=en_us<CR>
-imap <F6> :setlocal spell spelllang=en_us<CR>i
+" Spellchecking
+" https://vim.fandom.com/wiki/Toggle_spellcheck_with_function_keys
+let b:myLang=0
+let g:myLangList=["nospell","en_us","de"]
+function! ToggleSpell()
+  let b:myLang=b:myLang+1
+  if b:myLang>=len(g:myLangList) | let b:myLang=0 | endif
+  if b:myLang==0
+    setlocal nospell
+  else
+    execute "setlocal spell spelllang=".get(g:myLangList, b:myLang)
+  endif
+  echo "spell checking language:" g:myLangList[b:myLang]
+endfunction
+
+nmap <F6> :call ToggleSpell()<CR>
+imap <F6> :call ToggleSpell()<CR>a
 
 " Shortcut to make an if block in C. A more complicated/robust solution for
 " Fortran allowing for more block types exists in
