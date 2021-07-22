@@ -19,9 +19,10 @@ ln -s ~/Code/profile/gitconfig .gitconfig
 ln -s ~/Code/profile/profile .profile
 ln -s ~/Code/profile/vim .vim
 ln -s ~/Code/profile/vimrc .vimrc
+ln -s ~/Code/profile/diceware.ini .diceware.ini
 
 cd .vim
 git submodule update --init --recursive
 cd ..
 
-# TODO: make sure vim is installed.
+# TODO: make sure vim and diceware are installed.
