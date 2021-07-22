@@ -7,7 +7,6 @@ mkdir -p bin
 cd bin
 ln -s ~/Code/profile/bin/termtitle.sh .
 # TODO: make sure git-praise is present, and/or fetch it.
-# TODO: make sure ruby is installed.
 ln -s ~/Code/git-praise/git-praise .
 cd ..
 
@@ -25,4 +24,7 @@ cd .vim
 git submodule update --init --recursive
 cd ..
 
-# TODO: make sure vim and diceware are installed.
+sudo apt update && sudo apt install \
+    diceware \
+    ruby \
+    vim
