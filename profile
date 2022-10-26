@@ -30,6 +30,11 @@ if [ -d "$HOME/.local/bin" ] ; then
     export PATH="$PATH:$HOME/.local/bin"
 fi
 
+# Set PATH so it includes default go installation directory if it exists
+if [ -d "$HOME/go/bin" ] ; then
+    export PATH="$PATH:$HOME/go/bin"
+fi
+
 # I've never understood why this isn't in the path by default.
 export PATH="${PATH}:/usr/sbin:/sbin"
 
