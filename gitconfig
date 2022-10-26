@@ -25,7 +25,7 @@
   swd = diff --color -M --staged -w
   prev = show --name-only --pretty="format:"
   cur = diff --name-only --pretty="format:"
-  delete-merged = ! git branch --merged | grep -v '\\*' | grep -vw master | grep -vw main | xargs -n 1 git branch -d
+  delete-merged = ! git branch --merged | grep -v '\\*' | egrep -vw '(master|main|dunfell|gatesgarth|hardknott|honister|kirkstone)' | xargs -n 1 git branch -d
 [color]
   ui = auto
 [core]
