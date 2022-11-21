@@ -191,17 +191,17 @@ imap <F5> :%s/\s\+$//e<CR>i
 
 " Spellchecking
 " https://vim.fandom.com/wiki/Toggle_spellcheck_with_function_keys
-let b:myLang=0
+let g:myLang=0
 let g:myLangList=["nospell","en_us","de"]
 function! ToggleSpell()
-  let b:myLang=b:myLang+1
-  if b:myLang>=len(g:myLangList) | let b:myLang=0 | endif
-  if b:myLang==0
+  let g:myLang=g:myLang+1
+  if g:myLang>=len(g:myLangList) | let g:myLang=0 | endif
+  if g:myLang==0
     setlocal nospell
   else
-    execute "setlocal spell spelllang=".get(g:myLangList, b:myLang)
+    execute "setlocal spell spelllang=".get(g:myLangList, g:myLang)
   endif
-  echo "spell checking language:" g:myLangList[b:myLang]
+  echo "spell checking language:" g:myLangList[g:myLang]
 endfunction
 nmap <F6> :call ToggleSpell()<CR>
 imap <F6> :call ToggleSpell()<CR>a
