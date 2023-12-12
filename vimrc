@@ -165,7 +165,7 @@ nnoremap ," :s/^/"/<CR>:noh<CR>
 nnoremap ,; :s/^/;/<CR>:noh<CR>
 nnoremap ,! :s/^\(\s*\)\(.\)/\1!\2/<CR>:noh<CR>
 nnoremap ,% :s/^/% /<CR>:noh<CR>
-nnoremap ,c :s/^\(\s*\)\(\(\/\/\) \\|\(\#\)\\|\(\"\)\\|\(\;\)\\|\(\!\)\\|\(% \)\)/\1/<CR>:noh<CR>
+nnoremap ,c :s/^\(\s*\)\(\(\/\/\) \?\\|\(\#\)\\|\(\"\)\\|\(\;\)\\|\(\!\)\\|\(% \)\)/\1/<CR>:noh<CR>
 
 " If using the above shortcuts and searching for multiple items to comment/
 " uncomment, use this to search for the next desired item.
