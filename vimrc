@@ -137,7 +137,7 @@ if has('autocmd')
 
     autocmd FileType asciidoc,markdown,text set textwidth=0
     autocmd FileType python set textwidth=79
-    autocmd FileType javascript set textwidth=120 tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType javascript,typescript set textwidth=120 tabstop=2 softtabstop=2 shiftwidth=2
 
     augroup cpp_mode
       if executable('clang-format')
