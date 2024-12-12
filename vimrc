@@ -223,16 +223,6 @@ endfunction
 nmap <F7> mz:execute ToggleTag()<CR>'z
 imap <F7> mz:execute ToggleTag()<CR>'za
 
-" Shortcut to make an if block in C. A more complicated/robust solution for
-" Fortran allowing for more block types exists in
-" ~/.vim/ftplugin/fortran_codecomplete.vim.
-if has('autocmd')
-    autocmd FileType c,cpp nmap <F8> a<space>{<CR>}<ESC>O
-    autocmd FileType c,cpp imap <F8> <space>{<CR>}<ESC>O
-    autocmd FileType tex nmap <F8> o\begin{quotation}<CR>\end{quotation}<ESC>O
-    autocmd FileType tex imap <F8> <CR>\begin{quotation}<CR>\end{quotation}<ESC>O
-endif
-
 " Create nice brackets for a new scope and place the cursor in the middle.
 nnoremap ,{ o{<ESC>o}<ESC>O
 " If a line has been broken past where you want and you want to instead break
@@ -259,21 +249,25 @@ nmap <M-PageDown> gt
 imap <M-PageDown> <Esc>gt
 
 "============================== Plugins ================================
+" Call :PlugInstall to install after updating.
+call plug#begin()
+
+"Plug 'psf/black', { 'branch': 'stable' }
+"nnoremap <F8> :Black<CR>
+
+Plug 'brentyi/isort.vim'
+nnoremap <F9> :Isort<CR>
+"autocmd BufWritePre *.py call isort#Isort(0, line('$'), v:null, v:false)
+
+Plug 'charliermarsh/ruff'
+
+Plug 'rhysd/committia.vim'
+
+call plug#end()
+
 " Pathogen easy plugin installer.
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
-
-" Syntastic syntax checker.
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-""let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_cpp_checkers = ['clang_check']
-""let g:syntastic_clang_check_config_file = 1
 
 "============================== Inactive ===============================
 " Maintain 'persist' data, but keep my workspace clean
@@ -290,4 +284,27 @@ execute pathogen#infect()
 "if &term == "screen" || &term == "xterm"
 "   set title
 "endif
+
+" Shortcut to make an if block in C. A more complicated/robust solution for
+" Fortran allowing for more block types exists in
+" ~/.vim/ftplugin/fortran_codecomplete.vim.
+"if has('autocmd')
+"    autocmd FileType c,cpp nmap <F8> a<space>{<CR>}<ESC>O
+"    autocmd FileType c,cpp imap <F8> <space>{<CR>}<ESC>O
+"    autocmd FileType tex nmap <F8> o\begin{quotation}<CR>\end{quotation}<ESC>O
+"    autocmd FileType tex imap <F8> <CR>\begin{quotation}<CR>\end{quotation}<ESC>O
+"endif
+
+" Syntastic syntax checker.
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+""let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_cpp_checkers = ['clang_check']
+""let g:syntastic_clang_check_config_file = 1
+
 
