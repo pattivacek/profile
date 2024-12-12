@@ -25,7 +25,12 @@
   swd = diff --color -M --staged -w
   prev = show --name-only --pretty="format:"
   cur = diff --name-only --pretty="format:"
+  staged = diff --name-only --pretty="format:" --staged
   delete-merged = ! git branch --merged | grep -v '\\*' | egrep -vw '(master|main|dunfell|gatesgarth|hardknott|honister|kirkstone)' | xargs -n 1 git branch -d
+  untr = ls-files --others --exclude-standard
+  new = untr
+  unstage = ! git restore --staged $(git staged)
+  pfusch = push --force-with-lease
 [color]
   ui = auto
 [core]
