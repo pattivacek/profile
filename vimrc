@@ -4,7 +4,7 @@
 " is sourced just for that reason.
 
 "============================== Miscellaneous ==========================
-set nocompatible        " Turn off strict compatibility with vi.
+"set nocompatible        " Turn off strict compatibility with vi (apparently unnecessary)
 set nobackup            " Don't keep a backup file
 set noswapfile          " Don't keep swapfiles
 set viminfo='20,<50,s100,h  " 50 lines of registers
@@ -93,12 +93,12 @@ set shortmess=I
 " goes well with the mode display that we set later.
 set ruler
 
-if has('autocmd')
+augroup DisableBell
     " Disable the bell's annoying friend; visual bell.  Do it in a way that is
     " compatible across all architectures that support gvim and not just
     " Unix variants.
     autocmd VimEnter * set vb t_vb=""
-endif
+augroup END
 
 "let g:molokai_original=1
 "colorscheme molokai
@@ -111,7 +111,7 @@ colorscheme jellybeans      " Use more interesting colors
 "endif
 
 "========================== File Type Specifics ========================
-if has('autocmd')
+augroup FileTypes
     " Makefiles must have tabs in them or make will complain very loudly.
     autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
 
@@ -139,12 +139,10 @@ if has('autocmd')
     autocmd FileType python set textwidth=79
     autocmd FileType javascript,typescript set textwidth=120 tabstop=2 softtabstop=2 shiftwidth=2
 
-    augroup cpp_mode
-      if executable('clang-format')
-        autocmd FileType c,cpp setl formatprg=clang-format
-      endif
-    augroup end
-endif
+    if executable('clang-format')
+      autocmd FileType c,cpp setl formatprg=clang-format
+    endif
+augroup END
 
 let fortran_do_enddo=1
 let fortran_more_precise=1
@@ -194,7 +192,7 @@ imap <F5> :%s/\s\+$//e<CR>i
 " https://vim.fandom.com/wiki/Toggle_spellcheck_with_function_keys
 let g:myLang=0
 let g:myLangList=["nospell","en_us","de"]
-function! ToggleSpell()
+function! ToggleSpell() abort
   let g:myLang=g:myLang+1
   if g:myLang>=len(g:myLangList) | let g:myLang=0 | endif
   if g:myLang==0
@@ -209,7 +207,7 @@ imap <F6> :call ToggleSpell()<CR>a
 
 " Toggle tab width
 let g:myTab = 0
-function ToggleTag()
+function ToggleTag() abort
   if g:myTab
     set tabstop=4
     set softtabstop=4
