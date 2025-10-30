@@ -252,16 +252,9 @@ imap <M-PageDown> <Esc>gt
 " Call :PlugInstall to install after updating.
 call plug#begin()
 
-"Plug 'psf/black', { 'branch': 'stable' }
-"nnoremap <F8> :Black<CR>
-
-Plug 'brentyi/isort.vim'
-nnoremap <F9> :Isort<CR>
-"autocmd BufWritePre *.py call isort#Isort(0, line('$'), v:null, v:false)
-
 Plug 'charliermarsh/ruff'
-
 Plug 'rhysd/committia.vim'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
