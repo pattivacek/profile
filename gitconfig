@@ -2,8 +2,6 @@
   name = Patti Vacek
   email = pattivacek@gmail.com
   signingkey=148011C8B954ACB0AF4435D540877B37211A1173
-[push]
-  default = simple
 [alias]
   co = checkout
   br = branch
@@ -38,3 +36,35 @@
   pager = less -R
 [commit]
   gpgsign = true
+
+# https://blog.gitbutler.com/how-git-core-devs-configure-git/
+[tag]
+  sort = version:refname
+[init]
+  defaultBranch = main
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+[push]
+  autoSetupRemote = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+[help]
+  autocorrect = prompt
+[commit]
+  verbose = true
+[rerere]
+  enabled = true
+  autoupdate = true
+[rebase]
+  autoSquash = true
+  autoStash = true
+  # updateRefs = true # this messes with how I like to have backup branches
+[merge]
+  conflictstyle = zdiff3
+[pull]
+  rebase = true
