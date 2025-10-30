@@ -5,7 +5,7 @@ set -euo pipefail
 cd ~
 mkdir -p bin
 cd bin
-ln -s ~/Code/profile/bin/termtitle.sh .
+ln -s ~/Code/profile/bin/* .
 # TODO: make sure git-praise is present, and/or fetch it.
 ln -s ~/Code/git-praise/git-praise .
 cd ..

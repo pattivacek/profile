@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# https://codeberg.org/EvanHahn/dotfiles/src/branch/main/home/bin/bin/prettypath
+
+set -eu
+
+echo "$PATH" | sed 's/:/\
+/g'
+
